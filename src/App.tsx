@@ -1,29 +1,25 @@
-import { Box, Container } from "@mui/material";
-import EmailForm from "./components/EmailForm";
-import Heading from "./components/Heading";
-import ProtienForm from "./components/ProtienForm";
-import SubmitButton from "./components/Submit";
-import Cite from "./components/Cite";
-import ContactInfo from "./components/Contact";
-
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./routes/HomePage";
+import SubmitPage from "./routes/SubmitPage";
+import { EmailProvider } from "./components/EmailProtienContext";
 function App() {
+
   return (
-
-    <Container> 
-        <Heading/>
-        
-        <EmailForm/>
-        <ProtienForm/>
-        <SubmitButton/>
-        <Cite/>
-        <ContactInfo/>
-        
-        
-    </Container>
-    
-
-
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={
+      <EmailProvider>
+        <HomePage />
+     </EmailProvider>}/>
+      <Route path="/submit" element={
+      <EmailProvider>
+        <SubmitPage />
+     </EmailProvider>
+      }/>
+    </Routes>
+  </BrowserRouter>
   );
+  
 }
 
 export default App;
